@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик задач</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Планировщик задач</h1>
+            <button id="addTaskBtn">Добавить задачу</button>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Поиск задач...">
+            <select id="filterSelect">
+                <option value="all">Все задачи</option>
+                <option value="completed">Выполненные</option>
+                <option value="active">Активные</option>
+                <option value="high">Высокий приоритет</option>
+                <option value="medium">Средний приоритет</option>
+                <option value="low">Низкий приоритет</option>
+            </select>
+            <button id="clearCompleted">Очистить выполненные</button>
+        </div>
+
+        <div id="tasksContainer"></div>
+
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Новая задача</h2>
+                <form id="taskForm">
+                    <input type="hidden" id="taskId">
+                    <div class="form-group">
+                        <label for="taskTitle">Название:</label>
+                        <input type="text" id="taskTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Описание:</label>
+                        <textarea id="taskDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Приоритет:</label>
+                        <select id="taskPriority">
+                            <option value="high">Высокий</option>
+                            <option value="medium" selected>Средний</option>
+                            <option value="low">Низкий</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDueDate">Срок выполнения:</label>
+                        <input type="date" id="taskDueDate">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="taskCompleted"> Выполнено
+                        </label>
+                    </div>
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <h2>Подтверждение</h2>
+                <p id="confirmMessage">Вы уверены, что хотите удалить эту задачу?</p>
+                <div class="modal-buttons">
+                    <button id="confirmYes">Да</button>
+                    <button id="confirmNo">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
