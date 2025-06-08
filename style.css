@@ -1,0 +1,273 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+h1 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#filterSelect {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#clearCompleted {
+    background-color: #e74c3c;
+}
+
+#clearCompleted:hover {
+    background-color: #c0392b;
+}
+
+.task {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+    background-color: #f8f9fa;
+    border-left: 4px solid #2ecc71;
+}
+
+.task.high-priority {
+    border-left: 4px solid #e74c3c;
+}
+
+.task.medium-priority {
+    border-left: 4px solid #f39c12;
+}
+
+.task.low-priority {
+    border-left: 4px solid #3498db;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.task-priority {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 12px;
+    color: white;
+}
+
+.priority-high {
+    background-color: #e74c3c;
+}
+
+.priority-medium {
+    background-color: #f39c12;
+}
+
+.priority-low {
+    background-color: #3498db;
+}
+
+.task-description {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.task-actions button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.complete-btn {
+    background-color: #2ecc71;
+}
+
+.complete-btn:hover {
+    background-color: #27ae60;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+}
+
+.edit-btn:hover {
+    background-color: #d35400;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select,
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    #searchInput, #filterSelect {
+        width: 100%;
+    }
+    
+    .task-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .task-actions button {
+        margin-left: 0;
+        width: 100%;
+    }
+}
